@@ -1,34 +1,32 @@
 /* =====================================================
-   GUID BLUE — style.css
-   Estética: Premium Denim Industrial
-   Fuentes: Barlow Condensed + Barlow
+   GUID BLUE — CSS RESPONSIVE DEFINITIVO
    ===================================================== */
 
-/* ————————— VARIABLES ————————— */
+/* VARIABLES */
 :root {
-    --azul:       #1a6fd4;
-    --azul-vivo:  #2e8bff;
+    --azul: #1a6fd4;
+    --azul-vivo: #2e8bff;
     --azul-suave: #5aadff;
-    --oscuro:     #04080f;
-    --oscuro-2:   #080e1c;
-    --oscuro-3:   #0c1525;
-    --oscuro-4:   #10203a;
-    --blanco:     #ffffff;
+    --oscuro: #04080f;
+    --oscuro-2: #080e1c;
+    --oscuro-3: #0c1525;
+    --oscuro-4: #10203a;
+    --blanco: #ffffff;
     --gris-claro: #c8d8ec;
-    --gris-mid:   #8ba5c4;
-    --acento:     #ffb930;
+    --gris-mid: #8ba5c4;
+    --acento: #ffb930;
 
     --font-display: 'Barlow Condensed', sans-serif;
-    --font-body:    'Barlow', sans-serif;
+    --font-body: 'Barlow', sans-serif;
 
-    --radio:    16px;
+    --radio: 16px;
     --radio-lg: 28px;
-    --sombra:   0 20px 60px rgba(0,0,0,0.5);
-    --trans:    0.3s cubic-bezier(.4,0,.2,1);
+    --sombra: 0 20px 60px rgba(0,0,0,0.5);
+    --trans: 0.3s ease;
 }
 
-/* ————————— RESET & BASE ————————— */
-*, *::before, *::after {
+/* RESET */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -41,7 +39,7 @@ html {
 
 body {
     font-family: var(--font-body);
-    background-color: var(--oscuro);
+    background: var(--oscuro);
     color: var(--blanco);
     line-height: 1.65;
     overflow-x: hidden;
@@ -57,44 +55,42 @@ a {
     color: inherit;
 }
 
-/* ————————— HEADER ————————— */
+/* HEADER */
 .encabezado {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(4, 8, 15, 0.92);
+    background: rgba(4, 8, 15, 0.95);
     backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border-bottom: 1px solid rgba(46, 139, 255, 0.15);
+    border-bottom: 1px solid rgba(46, 139, 255, 0.18);
 }
 
 .barra-navegacion {
     max-width: 1300px;
     margin: 0 auto;
     padding: 0 5%;
-    height: 72px;
+    height: 78px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
-/* Logo */
+/* LOGO */
 .logo {
     display: flex;
     align-items: center;
     gap: 12px;
+    z-index: 2001;
 }
 
 .logo-icono {
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
     overflow: hidden;
     border: 2px solid rgba(46, 139, 255, 0.35);
     background: var(--oscuro-3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .logo-icono img {
@@ -105,32 +101,32 @@ a {
 
 .logo-texto {
     font-family: var(--font-display);
-    font-size: 26px;
+    font-size: 30px;
     font-weight: 900;
-    letter-spacing: 1px;
     color: var(--blanco);
+    letter-spacing: 1px;
 }
 
 .logo-texto em {
     font-style: normal;
     color: var(--azul-vivo);
-    margin-left: 3px;
+    margin-left: 4px;
 }
 
-/* Menú */
+/* MENU DESKTOP */
 .menu {
     list-style: none;
     display: flex;
-    gap: 4px;
     align-items: center;
+    gap: 4px;
 }
 
 .menu a {
     font-family: var(--font-display);
     font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.5px;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
     color: var(--gris-claro);
     padding: 8px 14px;
     border-radius: 8px;
@@ -155,22 +151,53 @@ a {
     color: var(--oscuro);
 }
 
-/* ————————— BOTONES GLOBALES ————————— */
-.btn-primario {
+/* CHECKBOX OCULTO */
+.menu-toggle {
+    display: none;
+}
+
+/* BOTON HAMBURGUESA */
+.menu-icono {
+    display: none;
+    width: 38px;
+    height: 32px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    z-index: 2001;
+}
+
+.menu-icono span {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: var(--blanco);
+    border-radius: 20px;
+    transition: var(--trans);
+}
+
+/* BOTONES */
+.btn-primario,
+.btn-wa {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     font-family: var(--font-display);
     font-size: 16px;
     font-weight: 800;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    color: var(--oscuro);
-    background: var(--azul-vivo);
     padding: 14px 28px;
     border-radius: 50px;
-    border: 2px solid var(--azul-vivo);
     transition: var(--trans);
+}
+
+.btn-primario {
+    color: var(--oscuro);
+    background: var(--azul-vivo);
+    border: 2px solid var(--azul-vivo);
 }
 
 .btn-primario:hover {
@@ -181,20 +208,9 @@ a {
 }
 
 .btn-wa {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-family: var(--font-display);
-    font-size: 16px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
     color: var(--blanco);
     background: transparent;
-    padding: 14px 28px;
-    border-radius: 50px;
     border: 2px solid rgba(255,255,255,0.3);
-    transition: var(--trans);
 }
 
 .btn-wa:hover {
@@ -211,7 +227,6 @@ a {
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
     color: var(--azul-suave);
     border-bottom: 1px solid rgba(90, 173, 255, 0.4);
     padding-bottom: 2px;
@@ -223,19 +238,17 @@ a {
     border-color: var(--blanco);
 }
 
-/* ————————— HERO ————————— */
+/* HERO */
 .hero {
-    min-height: 100vh;
+    min-height: calc(100vh - 78px);
     max-width: 1300px;
     margin: 0 auto;
-    padding: 80px 5% 80px;
+    padding: 80px 5%;
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
     gap: 60px;
     align-items: center;
-    position: relative;
 }
-
 
 .hero-badge {
     display: inline-flex;
@@ -255,18 +268,11 @@ a {
 }
 
 .badge-dot {
-    width: 8px;
-    height: 8px;
+    width: 9px;
+    height: 9px;
     background: #22c55e;
     border-radius: 50%;
-    flex-shrink: 0;
-    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
-    animation: pulso 2s infinite;
-}
-
-@keyframes pulso {
-    0%, 100% { box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25); }
-    50%       { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0.06); }
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
 }
 
 .hero-titulo {
@@ -344,7 +350,7 @@ a {
     background: rgba(255,255,255,0.15);
 }
 
-/* Imagen hero */
+/* IMAGEN HERO */
 .hero-imagen {
     position: relative;
 }
@@ -361,11 +367,6 @@ a {
     width: 100%;
     height: 560px;
     object-fit: cover;
-    transition: transform 0.6s ease;
-}
-
-.imagen-marco:hover img {
-    transform: scale(1.04);
 }
 
 .imagen-tag {
@@ -373,14 +374,12 @@ a {
     bottom: 20px;
     left: 20px;
     background: rgba(4, 8, 15, 0.85);
-    backdrop-filter: blur(12px);
     border: 1px solid rgba(46, 139, 255, 0.3);
     padding: 10px 18px;
     border-radius: 50px;
     font-family: var(--font-display);
     font-size: 13px;
     font-weight: 700;
-    letter-spacing: 1px;
     color: var(--azul-suave);
 }
 
@@ -405,17 +404,14 @@ a {
     top: 20px;
     right: -38px;
     writing-mode: vertical-rl;
-    text-transform: uppercase;
 }
 
-/* ————————— RIBBON ————————— */
+/* RIBBON */
 .ribbon {
     width: 100%;
     overflow: hidden;
     background: var(--azul-vivo);
     padding: 14px 0;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .ribbon-track {
@@ -423,7 +419,6 @@ a {
     gap: 28px;
     width: max-content;
     animation: ribbon-scroll 30s linear infinite;
-    align-items: center;
 }
 
 .ribbon-track span {
@@ -431,17 +426,21 @@ a {
     font-size: 15px;
     font-weight: 800;
     letter-spacing: 3px;
-    text-transform: uppercase;
     color: var(--blanco);
     white-space: nowrap;
 }
 
 @keyframes ribbon-scroll {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
 }
 
-/* ————————— HELPERS ————————— */
+/* SECCIONES GENERALES */
 .seccion {
     max-width: 1300px;
     margin: 0 auto;
@@ -463,6 +462,10 @@ a {
     margin-bottom: 14px;
 }
 
+.centrado {
+    text-align: center;
+}
+
 .titulo-centrado {
     font-family: var(--font-display);
     font-weight: 900;
@@ -480,19 +483,9 @@ a {
     font-size: 17px;
 }
 
-.centrado { text-align: center; }
-
-/* ————————— NOSOTROS ————————— */
+/* NOSOTROS */
 .nosotros {
     position: relative;
-}
-
-.nosotros::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 80% 50%, rgba(26,111,212,0.07) 0%, transparent 65%);
-    pointer-events: none;
 }
 
 .nos-grid {
@@ -538,7 +531,6 @@ a {
     font-size: 26px;
     font-weight: 800;
     margin-bottom: 28px;
-    color: var(--blanco);
 }
 
 .ventajas-lista {
@@ -568,14 +560,12 @@ a {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    letter-spacing: 0;
 }
 
 .ventajas-lista strong {
     display: block;
     font-size: 15px;
     margin-bottom: 3px;
-    color: var(--blanco);
 }
 
 .ventajas-lista p {
@@ -584,21 +574,19 @@ a {
     margin: 0;
 }
 
-/* ————————— MODELOS ————————— */
+/* MODELOS */
 .modelos {
-    background: linear-gradient(180deg, var(--oscuro) 0%, var(--oscuro-2) 50%, var(--oscuro) 100%);
+    background: linear-gradient(180deg, var(--oscuro), var(--oscuro-2), var(--oscuro));
 }
 
 .modelos-header {
     max-width: 1300px;
     margin: 0 auto 60px;
-    padding: 0 5%;
 }
 
 .grid-productos {
     max-width: 1300px;
     margin: 0 auto;
-    padding: 0 5%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
@@ -619,7 +607,6 @@ a {
 }
 
 .producto-img-wrap {
-    position: relative;
     overflow: hidden;
 }
 
@@ -629,15 +616,7 @@ a {
     object-fit: contain;
     background: radial-gradient(circle, #0b3c78, #04080f 70%);
     padding: 8px;
-    transition: transform 0.5s ease;
 }
-
-.producto:hover .producto-img-wrap img {
-    transform: scale(1.08);
-}
-
-
-
 
 .producto-info {
     padding: 18px 20px 22px;
@@ -658,7 +637,6 @@ a {
     font-family: var(--font-display);
     font-size: 22px;
     font-weight: 800;
-    color: var(--blanco);
     margin-bottom: 6px;
     line-height: 1.1;
 }
@@ -674,7 +652,7 @@ a {
     background: linear-gradient(135deg, var(--oscuro-4), var(--oscuro-3));
 }
 
-/* ————————— COLORES ————————— */
+/* COLORES */
 .colores-sec {
     background: var(--oscuro-2);
     padding: 100px 5%;
@@ -706,15 +684,27 @@ a {
     border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 
-.color-header.azul      { background: linear-gradient(135deg, #0a1e40, #0e2d5e); }
-.color-header.negro     { background: linear-gradient(135deg, #0a0a0a, #1c1c1c); }
-.color-header.gabardina { background: linear-gradient(135deg, #1a2030, #0f1820); }
-.color-header.trabajo   { background: linear-gradient(135deg, #0e1e30, #0a1828); }
+.color-header.azul {
+    background: linear-gradient(135deg, #0a1e40, #0e2d5e);
+}
+
+.color-header.negro {
+    background: linear-gradient(135deg, #0a0a0a, #1c1c1c);
+}
+
+.color-header.gabardina {
+    background: linear-gradient(135deg, #1a2030, #0f1820);
+}
+
+.color-header.trabajo {
+    background: linear-gradient(135deg, #0e1e30, #0a1828);
+}
 
 .color-swatch-row {
     display: flex;
     gap: 6px;
     margin-bottom: 12px;
+    flex-wrap: wrap;
 }
 
 .color-swatch-row span {
@@ -722,22 +712,17 @@ a {
     height: 26px;
     border-radius: 8px;
     border: 1px solid rgba(255,255,255,0.15);
-    flex-shrink: 0;
-    display: block;
 }
 
 .color-header h3 {
     font-family: var(--font-display);
     font-size: 22px;
     font-weight: 800;
-    color: var(--blanco);
 }
 
 .color-card ul {
     list-style: none;
     padding: 16px 22px;
-    display: flex;
-    flex-direction: column;
 }
 
 .color-card li {
@@ -751,7 +736,7 @@ a {
 }
 
 .color-card li::before {
-    content: '';
+    content: "";
     width: 6px;
     height: 6px;
     background: var(--azul-vivo);
@@ -770,19 +755,9 @@ a {
     margin-bottom: 12px;
 }
 
-/* ————————— CODIMO TEXTIL ————————— */
+/* CODIMO */
 .codimo-sec {
-    position: relative;
-    overflow: hidden;
     background: var(--oscuro);
-}
-
-.codimo-sec::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 20% 50%, rgba(26,111,212,0.08) 0%, transparent 60%);
-    pointer-events: none;
 }
 
 .codimo-interior {
@@ -793,7 +768,6 @@ a {
     grid-template-columns: 1fr 1fr;
     gap: 70px;
     align-items: center;
-    position: relative;
 }
 
 .codimo-texto h2 {
@@ -835,13 +809,11 @@ a {
     content: counter(codimo, decimal-leading-zero);
     position: absolute;
     left: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 12px;
     font-family: var(--font-display);
     font-size: 12px;
     font-weight: 900;
     color: var(--azul-vivo);
-    letter-spacing: 1px;
 }
 
 .codimo-imagen {
@@ -871,7 +843,7 @@ a {
     border-radius: 30px;
 }
 
-/* ————————— VIDEO ————————— */
+/* VIDEO */
 .video-sec {
     background: var(--oscuro-2);
     padding: 100px 5%;
@@ -880,7 +852,7 @@ a {
 
 .video-vertical {
     width: 330px;
-    max-width: 90%;
+    max-width: 100%;
     margin: 40px auto 0;
     border-radius: var(--radio-lg);
     overflow: hidden;
@@ -894,10 +866,9 @@ a {
     height: 585px;
     display: block;
     object-fit: cover;
-    background: #000;
 }
 
-/* ————————— HORARIOS ————————— */
+/* HORARIOS */
 .horarios-sec {
     background: var(--oscuro);
     padding: 100px 5%;
@@ -935,7 +906,6 @@ a {
     font-family: var(--font-display);
     font-size: 30px;
     font-weight: 800;
-    color: var(--blanco);
     margin-bottom: 24px;
     line-height: 1;
 }
@@ -962,12 +932,7 @@ a {
     color: var(--gris-claro);
 }
 
-.horario-card .btn-ghost {
-    margin-top: 18px;
-    display: inline-flex;
-}
-
-/* ————————— UBICACIÓN ————————— */
+/* UBICACION */
 .ubicacion-sec {
     padding: 100px 5%;
 }
@@ -992,7 +957,7 @@ a {
     text-align: center;
 }
 
-/* ————————— CONTACTO ————————— */
+/* CONTACTO */
 .contacto-sec {
     background: var(--oscuro-2);
     padding: 100px 5%;
@@ -1051,13 +1016,23 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 22px;
     flex-shrink: 0;
 }
 
-.canal-icono.wa  { background: rgba(37, 211, 102, 0.14); color: #25d366; }
-.canal-icono.ig  { background: rgba(225, 48, 108, 0.14); color: #e1306c; }
-.canal-icono.loc { background: rgba(46, 139, 255, 0.14); }
+.canal-icono.wa {
+    background: rgba(37, 211, 102, 0.14);
+    color: #25d366;
+}
+
+.canal-icono.ig {
+    background: rgba(225, 48, 108, 0.14);
+    color: #e1306c;
+}
+
+.canal-icono.loc {
+    background: rgba(46, 139, 255, 0.14);
+}
 
 .canal-card div {
     display: flex;
@@ -1067,7 +1042,6 @@ a {
 .canal-card strong {
     font-size: 14px;
     font-weight: 700;
-    color: var(--blanco);
     margin-bottom: 2px;
 }
 
@@ -1076,7 +1050,7 @@ a {
     color: var(--gris-mid);
 }
 
-/* Formulario */
+/* FORMULARIO */
 .formulario {
     background: var(--oscuro-3);
     border: 1px solid rgba(46, 139, 255, 0.15);
@@ -1088,7 +1062,6 @@ a {
     font-family: var(--font-display);
     font-size: 28px;
     font-weight: 800;
-    color: var(--blanco);
     margin-bottom: 28px;
 }
 
@@ -1123,7 +1096,7 @@ a {
 
 .campo input::placeholder,
 .campo textarea::placeholder {
-    color: rgba(255,255,255,0.22);
+    color: rgba(255,255,255,0.25);
 }
 
 .campo input:focus,
@@ -1140,10 +1113,6 @@ a {
 
 .btn-form {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
     background: var(--azul-vivo);
     color: var(--blanco);
     border: none;
@@ -1156,7 +1125,6 @@ a {
     text-transform: uppercase;
     cursor: pointer;
     transition: var(--trans);
-    margin-top: 8px;
 }
 
 .btn-form:hover {
@@ -1165,7 +1133,7 @@ a {
     box-shadow: 0 12px 35px rgba(46, 139, 255, 0.4);
 }
 
-/* ————————— FOOTER ————————— */
+/* FOOTER */
 .pie-pagina {
     background: #02050c;
     border-top: 1px solid rgba(46, 139, 255, 0.15);
@@ -1186,10 +1154,8 @@ a {
     font-family: var(--font-display);
     font-size: 42px;
     font-weight: 900;
-    color: var(--blanco);
     display: block;
     margin-bottom: 12px;
-    letter-spacing: -1px;
     line-height: 1;
 }
 
@@ -1201,7 +1167,6 @@ a {
 .footer-brand p {
     font-size: 15px;
     color: var(--gris-mid);
-    line-height: 1.6;
 }
 
 .footer-links,
@@ -1247,7 +1212,11 @@ a {
     color: rgba(255,255,255,0.28);
 }
 
-/* ————————— RESPONSIVE ————————— */
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+/* TABLET GRANDE */
 @media (max-width: 1100px) {
     .grid-productos {
         grid-template-columns: repeat(3, 1fr);
@@ -1266,47 +1235,149 @@ a {
     }
 }
 
+/* TABLET Y CELULAR */
 @media (max-width: 900px) {
-    .menu {
-        display: none;
+
+    .barra-navegacion {
+        height: 82px;
+        padding: 0 24px;
     }
 
-    .hero {
-        grid-template-columns: 1fr;
-        padding-top: 100px;
-        gap: 40px;
+    .logo-icono {
+        width: 52px;
+        height: 52px;
+    }
+
+    .logo-texto {
+        font-size: 34px;
+    }
+
+    .menu-icono {
+        display: flex;
+    }
+
+    .menu {
+        position: absolute;
+        top: 82px;
+        left: 0;
+        width: 100%;
+        background: rgba(4, 8, 15, 0.98);
+        border-top: 1px solid rgba(46, 139, 255, 0.25);
+        border-bottom: 1px solid rgba(46, 139, 255, 0.25);
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding: 18px 0;
+    }
+
+    .menu li {
+        width: 100%;
         text-align: center;
     }
 
-    .hero-badge,
-    .hero-acciones,
-    .hero-stats {
-        justify-content: center;
+    .menu a {
+        width: 100%;
+        padding: 14px 0;
+        font-size: 18px;
+        border-radius: 0;
+    }
+
+    .menu .menu-cta {
+        width: auto;
+        margin-top: 10px;
+        padding: 12px 35px;
+        border-radius: 30px;
+    }
+
+    .menu-toggle:checked ~ .menu {
+        display: flex;
+    }
+
+    .menu-toggle:checked + .menu-icono span:nth-child(1) {
+        transform: rotate(45deg) translate(7px, 7px);
+    }
+
+    .menu-toggle:checked + .menu-icono span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle:checked + .menu-icono span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        padding: 85px 6% 60px;
+        gap: 35px;
+        text-align: center;
+    }
+
+    .hero-badge {
+        margin-bottom: 24px;
     }
 
     .hero-desc {
         margin-left: auto;
         margin-right: auto;
+        max-width: 90%;
+        font-size: 18px;
+        line-height: 1.7;
     }
 
-    .hero-bg-text,
-    .imagen-deco-2 {
+    .hero-acciones {
+        justify-content: center;
+        margin-bottom: 36px;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .hero-imagen {
         display: none;
     }
 
-    .imagen-marco img {
-        height: 400px;
+    .titulo-line {
+        font-size: clamp(78px, 20vw, 120px);
+    }
+
+    .hero-sub {
+        font-size: 23px;
+        letter-spacing: 5px;
+    }
+
+    .btn-primario,
+    .btn-wa {
+        width: 100%;
+        max-width: 360px;
+        font-size: 18px;
+        padding: 16px 28px;
     }
 
     .nos-grid,
     .codimo-interior,
     .contacto-interior {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 42px;
+    }
+
+    .nos-texto,
+    .codimo-texto,
+    .contacto-texto {
+        text-align: center;
+    }
+
+    .nos-texto p,
+    .codimo-texto p,
+    .contacto-texto > p {
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .codimo-imagen img {
-        height: 360px;
+        height: 380px;
     }
 
     .grid-productos {
@@ -1316,13 +1387,15 @@ a {
     .horarios-grid {
         grid-template-columns: 1fr;
     }
+
+    .contacto-canales {
+        max-width: 520px;
+        margin: 0 auto;
+    }
 }
 
+/* CELULAR */
 @media (max-width: 640px) {
-    .grid-productos,
-    .colores-grid {
-        grid-template-columns: 1fr;
-    }
 
     .seccion,
     .seccion-full,
@@ -1336,20 +1409,69 @@ a {
         padding-bottom: 70px;
     }
 
+    .grid-productos,
+    .colores-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modelos-header {
+        margin-bottom: 40px;
+    }
+
+    .texto-centrado {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+
+    .nos-ventajas,
+    .horario-card,
     .formulario {
         padding: 28px 22px;
     }
 
-    .footer-interior {
-        grid-template-columns: 1fr;
+    .hero {
+        padding-top: 70px;
+    }
+
+    .hero-badge {
+        font-size: 12px;
+        letter-spacing: 2px;
+        padding: 8px 14px;
+    }
+
+    .titulo-line {
+        font-size: 78px;
+    }
+
+    .hero-sub {
+        font-size: 19px;
+        letter-spacing: 4px;
+    }
+
+    .hero-desc {
+        font-size: 17px;
+        line-height: 1.65;
+        max-width: 100%;
     }
 
     .hero-stats {
-        gap: 16px;
+        gap: 14px;
     }
 
     .stat-num {
-        font-size: 26px;
+        font-size: 28px;
+    }
+
+    .stat-label {
+        font-size: 10px;
+    }
+
+    .producto-img-wrap img {
+        height: 260px;
+    }
+
+    .codimo-imagen img {
+        height: 320px;
     }
 
     .video-vertical {
@@ -1358,5 +1480,129 @@ a {
 
     .video-vertical video {
         height: 535px;
+    }
+
+    .mapa-contenedor iframe {
+        height: 330px;
+    }
+
+    .footer-interior {
+        grid-template-columns: 1fr;
+        gap: 34px;
+        text-align: center;
+    }
+
+    .footer-links,
+    .footer-contacto {
+        align-items: center;
+    }
+}
+
+/* CELULAR PEQUEÑO */
+@media (max-width: 480px) {
+
+    .barra-navegacion {
+        height: 76px;
+        padding: 0 18px;
+    }
+
+    .logo-icono {
+        width: 44px;
+        height: 44px;
+    }
+
+    .logo-texto {
+        font-size: 28px;
+    }
+
+    .menu {
+        top: 76px;
+    }
+
+    .menu-icono {
+        width: 34px;
+        height: 30px;
+    }
+
+    .menu-icono span {
+        height: 3px;
+    }
+
+    .hero {
+        padding: 60px 6% 50px;
+    }
+
+    .hero-badge {
+        font-size: 11px;
+        letter-spacing: 1.8px;
+        padding: 7px 12px;
+    }
+
+    .titulo-line {
+        font-size: 72px;
+    }
+
+    .hero-sub {
+        font-size: 17px;
+        letter-spacing: 3px;
+    }
+
+    .hero-desc {
+        font-size: 16px;
+    }
+
+    .btn-primario,
+    .btn-wa {
+        font-size: 16px;
+        padding: 15px 24px;
+    }
+
+    .hero-stats {
+        gap: 10px;
+    }
+
+    .stat-div {
+        height: 34px;
+    }
+
+    .stat-num {
+        font-size: 25px;
+    }
+
+    .stat-label {
+        font-size: 9px;
+    }
+
+    .titulo-centrado {
+        font-size: 38px;
+    }
+
+    .nos-texto h2,
+    .contacto-texto h2 {
+        font-size: 42px;
+    }
+
+    .codimo-texto h2 {
+        font-size: 54px;
+    }
+
+    .producto-img-wrap img {
+        height: 240px;
+    }
+
+    .horario-card h3 {
+        font-size: 26px;
+    }
+
+    .video-vertical {
+        width: 270px;
+    }
+
+    .video-vertical video {
+        height: 480px;
+    }
+
+    .formulario h3 {
+        font-size: 25px;
     }
 }
